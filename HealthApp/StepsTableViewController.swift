@@ -16,7 +16,6 @@ class StepsTableViewController: UITableViewController {
     @IBOutlet weak var labelToday: UILabel!
     
     
-    
     //MARK: Var
     
     var todayStep = Int()
@@ -29,16 +28,11 @@ class StepsTableViewController: UITableViewController {
         }
     }
     
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //MARK: Get Healthkit permission 
         HealthKitAssistant.shared.getHealthKitPermission { (response) in
-            self.loadMostRecentSteps()
+            self.loadData()
         }
         
     }
@@ -47,10 +41,10 @@ class StepsTableViewController: UITableViewController {
     //MARK: - Healthkit step load
     ////////////////////////////////////
     
-    func loadMostRecentSteps()  {
+    func loadData()  {
         
         guard let stepsdata = HKQuantityType.quantityType(forIdentifier: .stepCount) else { return }
-        
+
         HealthKitAssistant.shared.getMostRecentStep(for: stepsdata) { (steps , stepsData) in
             self.todayStep = steps
             self.stepDataSource = stepsData
@@ -58,6 +52,15 @@ class StepsTableViewController: UITableViewController {
                 self.labelToday.text = "\(self.todayStep)"
             }
         }
+
+        // observe heart rate
+        HealthKitAssistant.shared.observerHeartRateSamples()
+
+        // load today activity summary
+        HealthKitAssistant.shared.fetchActivitySummary()
+
+        // load workout data
+        HealthKitAssistant.shared.fetchWorkoutsData()
     }
     
     

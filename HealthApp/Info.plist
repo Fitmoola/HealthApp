@@ -22,6 +22,10 @@
 	<true/>
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
 	<string>Wants to Access Health Records</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Wants to Access Health Share</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Wants to Update Health Share</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -36,10 +40,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Wants to Access Health Share</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Wants to Update Health Share</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
