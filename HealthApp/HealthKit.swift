@@ -77,7 +77,7 @@ class HealthKitAssistant {
             healthKitStore.stop(heartRateQuery)
         }
 
-        heartRateQuery = HKObserverQuery(sampleType: heartRateSampleType!, predicate: nil) { (_, _, error) in
+        heartRateQuery = HKObserverQuery(sampleType: heartRateSampleType!, predicate: nil) { (_, completionHandler, error) in
             if let error = error {
                 print("Error gettint heart rate data: \(error.localizedDescription)")
                 return
@@ -85,6 +85,7 @@ class HealthKitAssistant {
 
             self.fetchLatestHeartRateSample { (sample) in
                 guard let sample = sample else {
+                    completionHandler()
                     return
                 }
 
@@ -94,6 +95,7 @@ class HealthKitAssistant {
                     let heartRate = sample.quantity.doubleValue(for: heartRateUnit)
 
                     print("Heart Rate Sample: \(heartRate)")
+                    completionHandler()
                 }
             }
         }

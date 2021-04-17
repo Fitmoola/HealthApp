@@ -43,24 +43,24 @@ class StepsTableViewController: UITableViewController {
     
     func loadData()  {
         
-        guard let stepsdata = HKQuantityType.quantityType(forIdentifier: .stepCount) else { return }
+        // guard let stepsdata = HKQuantityType.quantityType(forIdentifier: .stepCount) else { return }
 
-        HealthKitAssistant.shared.getMostRecentStep(for: stepsdata) { (steps , stepsData) in
-            self.todayStep = steps
-            self.stepDataSource = stepsData
-            DispatchQueue.main.async {
-                self.labelToday.text = "\(self.todayStep)"
-            }
-        }
+//        HealthKitAssistant.shared.getMostRecentStep(for: stepsdata) { (steps , stepsData) in
+//            self.todayStep = steps
+//            self.stepDataSource = stepsData
+//            DispatchQueue.main.async {
+//                self.labelToday.text = "\(self.todayStep)"
+//            }
+//        }
 
         // observe heart rate
         HealthKitAssistant.shared.observerHeartRateSamples()
 
         // load today activity summary
-        HealthKitAssistant.shared.fetchActivitySummary()
+        //  HealthKitAssistant.shared.fetchActivitySummary()
 
         // load workout data
-        HealthKitAssistant.shared.fetchWorkoutsData()
+        // HealthKitAssistant.shared.fetchWorkoutsData()
     }
     
     
